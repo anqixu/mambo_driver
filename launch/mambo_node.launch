@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="namespace" default="mambo" />
+    <arg name="use_wifi" default="False" />
+    <arg name="bluetooth_addr" default="e0:14:ef:39:3d:d1" />
+
+    <group ns="$(arg namespace)">
+        <node pkg="mambo_driver" name="mambo" type="mambo_driver_node.py" output="screen">
+            <param name="use_wifi" value="$(arg use_wifi)" />
+            <param name="bluetooth_addr" value="$(arg bluetooth_addr)" />
+        </node>
+    </group>
+</launch>

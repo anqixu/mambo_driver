@@ -1,0 +1,4 @@
+bluepy
+-e git://github.com/anqixu/pyparrot.git#egg=pyparrot
+untangle
+zeroconf

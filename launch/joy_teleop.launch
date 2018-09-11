@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="joy_dev" default="/dev/input/gamepads/js_dft" />
+  <arg name="joy_config" default="ds3_usb" />
+  <arg name="teleop_config" default="$(find mambo_driver)/misc/$(arg joy_config).yaml" />
+
+  <arg name="namespace" default="mambo" />
+
+  <group ns="$(arg namespace)">
+    <rosparam file="$(arg teleop_config)" command="load" />
+
+    <node pkg="joy" type="joy_node" name="joy_node">
+      <param name="dev" value="$(arg joy_dev)" />
+      <param name="deadzone" value="0.2" />
+      <param name="autorepeat_rate" value="20" />
+    </node>
+
+    <node pkg="joy_teleop" type="joy_teleop.py" name="joy_teleop">
+    </node>
+  </group>
+
+</launch>
